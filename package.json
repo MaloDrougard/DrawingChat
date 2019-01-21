@@ -11,7 +11,8 @@
     "ejs": "^2.6.1",
     "express": "*",
     "nodemon": "^1.18.9",
-    "save": "^2.3.3"
+    "save": "^2.3.3",
+    "socket.io": "^2.2.0"
   },
   "author": "makem",
   "license": "MIT"

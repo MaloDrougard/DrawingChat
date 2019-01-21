@@ -1,27 +1,77 @@
-<% include partials/header %>
+<html>
+<head>
+  <title>
+    <%= appTitle %>
+  </title>
+  
+  <style>
+    
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0; 
+      padding: 0; 
+    }
+    
+    .container {
+      border: 2px solid #dedede;
+      background-color: #f1f1f1;
+      border-radius: 5px;
+    }
+    
+    #room{
+      width: 80%;
+      height:60%;
+      margin: auto; 
+      margin-top:10px; 
+    }
+    
+    #inputContainer {
+      width:80%;
+      height:1.5em;
+      margin: auto; 
+      margin-top:10px; 
+    }
+    
+    #textInputContainer{
+      display: inline-block; 
+      width:80%;
+    }
+    
+    #textInput{
+      display: inline-block;
+      width:90%; 
+    }
+    #submitBtn{
+      display: inline-block; 
+      width: 15%; 
+    
+    }
     
     
-      <ul>
-      <% users.forEach( function(user) { %>
-	<li> <%= user.action %>
-	</li>
+  </style>
+  
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js' ></script> 
+    <script src='http://code.jquery.com/jquery-latest.min.js'></script>
+    <script src='chat.js'></script>
+     
+</head>
+  
+  
+  <body>
+      
+      <div id="room" class="container">
+	here will be the online messages 
+      </div>
+     
+     <div id="inputContainer">
+	<span id="textInputContainer" class="container">
+	  <span>></span>
+	  <span id="textInput" contenteditable=true>..</span>
+	</span>
+      
+	<span id="submitBtn" class="container">Submit</span>
+      </div>
 	
-      <% }) %>
-      </ul>
-      
-      <form method="POST" action="/users/add">
-      <label> ID </label>
-      <input type="text" name="id">
-      <br>
-      <label> Name </label>
-      <input type="text" name="name">
-      <br>
-      <label> Action </label>
-      <input type="text" name="action">
-      <br>
-      <input type="submit" value="submit">
-      
-      
-      </form>
-    
-<% include partials/footer %>    
+  </body>
+</html>

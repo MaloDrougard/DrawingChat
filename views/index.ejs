@@ -1,0 +1,27 @@
+<% include partials/header %>
+    
+    
+      <ul>
+      <% users.forEach( function(user) { %>
+	<li> <%= user.action %>
+	</li>
+	
+      <% }) %>
+      </ul>
+      
+      <form method="POST" action="/users/add">
+      <label> ID </label>
+      <input type="text" name="id">
+      <br>
+      <label> Name </label>
+      <input type="text" name="name">
+      <br>
+      <label> Action </label>
+      <input type="text" name="action">
+      <br>
+      <input type="submit" value="submit">
+      
+      
+      </form>
+    
+<% include partials/footer %>    

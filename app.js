@@ -20,6 +20,35 @@ var logger = function(req, res, next) {
 app.use(logger); 
 */
 
+var users = [
+  {
+    id: 1,
+    name: "prout",
+    action: "a1"
+  },
+   {
+    id: 2,
+    name: "dsfa",
+    action: "a2"
+  },
+   {
+    id: 3,
+    name: "proutuoupt",
+    action: "a3"
+  },
+   {
+    id: 4,
+    name: "proufdat",
+    action: "a4"
+  }
+]
+
+
+// Set the middleware view engine
+app.set('view engine', 'ejs'); 
+// dir that contains the view templates
+app.set('views', path.join(__dirname, 'views')); 
+
 // set the body-parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
@@ -28,9 +57,18 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req,res){
-  res.send("hello world"); 
-  
+  res.render("index",{users: users}  ); 
 });
+
+app.post('/users/add', function(req,res) {
+  var newUser = {
+    id: req.body.id,
+    name: req.body.name,
+    action: req.body.action
+  }
+  users.push(newUser); 
+});
+
 
 app.listen(3000, function() {
   console.log("Server started on port 3000;"); // call back function

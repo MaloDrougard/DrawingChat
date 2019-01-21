@@ -1,0 +1,15 @@
+{
+  "name": "basicex",
+  "version": "1.0.0",
+  "description": "Tutorial https://www.youtube.com/watch?v=gnsO8-xJ8rs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*"
+  },
+  "author": "makem",
+  "license": "MIT"
+}

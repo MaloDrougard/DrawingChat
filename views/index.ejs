@@ -19,9 +19,16 @@
       border-radius: 5px;
     }
     
-    #room{
+    #board{
       width: 80%;
       height:60%;
+      margin: auto; 
+      margin-top:10px; 
+    }
+    
+    #room{
+      width: 80%;
+      height:6em;
       margin: auto; 
       margin-top:10px; 
     }
@@ -51,8 +58,10 @@
     
   </style>
   
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js' ></script> 
-    <script src='http://code.jquery.com/jquery-latest.min.js'></script>
+    <script src='socket.io.dev.js' ></script> 
+    <script src='jquery-3.3.1.js'></script>
+    <script src='p5.js'></script>
+    <script src="sketch.js"></script>
     <script src='chat.js'></script>
      
 </head>
@@ -60,11 +69,10 @@
   
   <body>
       
-      <div id="room" class="container">
-	here will be the online messages 
-      </div>
+      <div id="board"></div>
      
      <div id="inputContainer">
+	
 	<span id="textInputContainer" class="container">
 	  <span>></span>
 	  <span id="textInput" contenteditable=true>..</span>
@@ -72,6 +80,8 @@
       
 	<span id="submitBtn" class="container">Submit</span>
       </div>
+	
+      <div id="room" class="container"> </div>
 	
   </body>
 </html>

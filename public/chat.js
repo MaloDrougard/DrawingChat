@@ -14,6 +14,11 @@ $(function(){
   socket.on('fire_new_message', function (data) {
     console.log("new message recived" + data.message);
     chatRoom.append("<p>" + data.message + "</p>");
+  
+    ellipse(100, 0, 80, 80);
+    
   });
+  
+  
   
 }); 

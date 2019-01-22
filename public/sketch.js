@@ -5,7 +5,7 @@ function setup() {
   canvas.parent("board");
   
 }
-
+/*
 function draw() {
   if (mouseIsPressed) {
     fill(0);
@@ -14,3 +14,4 @@ function draw() {
   }
   ellipse(mouseX, mouseY, 80, 80);
 }
+*/

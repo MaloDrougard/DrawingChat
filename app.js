@@ -31,7 +31,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // set action on a GET request
 app.get('/', function (req,res){
-  res.render("index", {appTitle: "chat effect"} ); 
+  res.render("index", {appTitle: "chat effect",
+      audios: [
+          {name: "auteur-noir", src: "sounds/auteur-noir.mp3", key: "noir"},
+          {name: "bbbbb", src: "fdsaffdsa", key: "fadfaf"}
+          ]
+  });
 });
 
 // set the server

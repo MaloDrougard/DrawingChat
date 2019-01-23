@@ -2,7 +2,8 @@
 var temp = null;
 
 $(function(){
-  var socket = io.connect('http://localhost:3000')
+    // use ip for LAN usage
+  var socket = io.connect('http://192.168.0.57:3000') ;
   
   var submitBtn = $("#submitBtn");
   var textInput = $("#textInput");
@@ -34,8 +35,17 @@ $(function(){
     console.log("new message recived" + data.message);
     temp = data.date;
     chatRoom.prepend("<p>" + data.date + "   " + data.message + "</p>");
+    if ( data.message == "triangle" ){
+        myTriangle();
+    }
+    if (data.message == "noir"){
+        $("#noir").trigger("play" );
+    }
+    if(data.message == "noir stop"){
+        $("#noir").trigger("pause" );
+    }
 
-    ellipse(100, 0, 80, 80);
+
     
   });
   

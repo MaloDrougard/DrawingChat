@@ -1,95 +1,100 @@
 <html>
 <head>
-  <title>
-    <%= appTitle %>
-  </title>
-  
-  <style>
-    
-    body {
-      height: 100%;
-      width: 100%;
-      margin: 0; 
-      padding: 0; 
-    }
+    <title>
+        <%= appTitle %>
+    </title>
 
-    p {
-        margin: 0;
-        padding: 0;
-    }
+    <style>
 
-    .container {
-      border: 2px solid #dedede;
-      background-color: #f1f1f1;
-      border-radius: 5px;
-    }
-    
-    #board{
-      width: 80%;
-      height:60%;
-      margin: auto; 
-      margin-top:10px; 
-    }
-    
-    #room{
-      width: 80%;
-      height:6em;
-      margin: auto; 
-      margin-top:10px;
-      overflow-y: scroll;
-    }
-    
-    #inputContainer {
-      width:80%;
-      height:1.5em;
-      margin: auto; 
-      margin-top:10px; 
-    }
-    
-    #textInputContainer{
-      display: inline-block; 
-      width:80%;
-    }
-    
-    #textInput{
-      display: inline-block;
-      width:90%;
-      border: none;
-      background-color: #f1f1f1;
-    }
-    #submitBtn{
-      display: inline-block; 
-      width: 15%; 
-    
-    }
-    
-    
-  </style>
-  
-    <script src='socket.io.dev.js' ></script> 
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            border: 2px solid #dedede;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+        }
+
+        #board {
+            width: 80%;
+            height: 60%;
+            margin: auto;
+            margin-top: 10px;
+        }
+
+        #room {
+            width: 80%;
+            height: 6em;
+            margin: auto;
+            margin-top: 10px;
+            overflow-y: scroll;
+        }
+
+        #inputContainer {
+            width: 80%;
+            height: 1.5em;
+            margin: auto;
+            margin-top: 10px;
+        }
+
+        #textInputContainer {
+            display: inline-block;
+            width: 80%;
+        }
+
+        #textInput {
+            display: inline-block;
+            width: 90%;
+            border: none;
+            background-color: #f1f1f1;
+        }
+
+        #submitBtn {
+            display: inline-block;
+            width: 15%;
+
+        }
+
+
+    </style>
+
+    <script src='socket.io.dev.js'></script>
     <script src='jquery-3.3.1.js'></script>
     <script src='p5.js'></script>
     <script src="sketch.js"></script>
     <script src='chat.js'></script>
-     
+
 </head>
-  
-  
-  <body>
-      
-      <div id="board"></div>
-     
-     <div id="inputContainer">
-	
+
+
+<body>
+
+<div id="board"></div>
+
+<div id="inputContainer">
 	<span id="textInputContainer" class="container">
 	  <span>></span>
-	  <input id="textInput" value=""></input>
+	  <input id="textInput" value="" autofocus></input>
 	</span>
-      
-	<span id="submitBtn" class="container">Submit</span>
-      </div>
-	
-      <div id="room" class="container"> </div>
-	
-  </body>
+    <span id="submitBtn" class="container">Submit</span>
+</div>
+
+<div id="room" class="container"></div>
+
+<div id="audios" >
+    <% for(var i=0; i < audios.length; i++) { %>
+        <audio id=<%= audios[i].key %> src=<%= audios[i].src%> preload="auto"></audio>
+    <% } %>
+</div>
+
+</body>
 </html>

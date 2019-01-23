@@ -26,26 +26,36 @@ app.set('view engine', 'ejs');
 // dir that contains the view templates
 app.set('views', path.join(__dirname, 'views')); 
 
-// set and serve static path
+// set static path
 app.use(express.static(path.join(__dirname, 'public')));
 
+// set action on a GET request
 app.get('/', function (req,res){
   res.render("index", {appTitle: "chat effect"} ); 
 });
 
-
+// set the server
 var server = app.listen(3000, function() {
   console.log("Server started on port 3000;"); // call back function
 }) ;
 
+// formating function for the time prefix of a message
+function timePrefix(date){
+  return "" + date.getHours() + ":" +  date.getMinutes() + ":" + date.getSeconds() + ":";
+}
+
+
+// the core of the chat (manage socket connection)
 var io = require('socket.io')(server)
 io.on('connection' , function(socket) {
+  
   console.log("new user connected"); 
   
   socket.on('push_new_message', function(data) {
-    console.log("new message recived: val=" + data.message); 
+    var date = new Date();
+    console.log(date.toDateString() + ": New message recieved: val=" + data.message);
     // broadcast the message (remark the s of sockets)
-    io.sockets.emit('fire_new_message', {message: data.message} );
+    io.sockets.emit('fire_new_message', {message: data.message, date: timePrefix(date) } );
   });
   
 });

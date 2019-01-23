@@ -12,7 +12,12 @@
       margin: 0; 
       padding: 0; 
     }
-    
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
+
     .container {
       border: 2px solid #dedede;
       background-color: #f1f1f1;
@@ -30,7 +35,8 @@
       width: 80%;
       height:6em;
       margin: auto; 
-      margin-top:10px; 
+      margin-top:10px;
+      overflow-y: scroll;
     }
     
     #inputContainer {
@@ -47,7 +53,9 @@
     
     #textInput{
       display: inline-block;
-      width:90%; 
+      width:90%;
+      border: none;
+      background-color: #f1f1f1;
     }
     #submitBtn{
       display: inline-block; 
@@ -75,7 +83,7 @@
 	
 	<span id="textInputContainer" class="container">
 	  <span>></span>
-	  <span id="textInput" contenteditable=true>..</span>
+	  <input id="textInput" value=""></input>
 	</span>
       
 	<span id="submitBtn" class="container">Submit</span>

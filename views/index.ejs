@@ -18,6 +18,10 @@
             padding: 0;
         }
 
+        .messagePrefix {
+            color: #797573;
+        }
+
         .container {
             border: 2px solid #dedede;
             background-color: #f1f1f1;
@@ -53,7 +57,7 @@
 
         #textInput {
             display: inline-block;
-            width: 90%;
+            width: auto;
             border: none;
             background-color: #f1f1f1;
         }
@@ -73,6 +77,7 @@
     <script src="sketch.js"></script>
     <script src='chat.js'></script>
 
+
 </head>
 
 
@@ -82,7 +87,8 @@
 
 <div id="inputContainer">
 	<span id="textInputContainer" class="container">
-	  <span>></span>
+	  <span id="userField"><%= username %></span>
+      <span>></span>
 	  <input id="textInput" value="" autofocus></input>
 	</span>
     <span id="submitBtn" class="container">Submit</span>

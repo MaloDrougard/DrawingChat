@@ -1,10 +1,11 @@
-console.log("project start")
+console.log("project start");
 
 // the import /require
 var express = require('express');
 var path = require('path'); // path is core module of node, (no need of install)
 
 var app = express(); 
+var generator = require('./name-generator');
 
 /*
 // Create a middleware function
@@ -29,9 +30,12 @@ app.set('views', path.join(__dirname, 'views'));
 // set static path
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 // set action on a GET request
 app.get('/', function (req,res){
-  res.render("index", {appTitle: "chat effect",
+  res.render("index", {
+      appTitle: "chat effect",
+      username: generator.generateRandomName(),
       audios: [
           {name: "auteur-noir", src: "sounds/auteur-noir.mp3", key: "noir"},
           {name: "bbbbb", src: "fdsaffdsa", key: "fadfaf"}
@@ -59,8 +63,10 @@ io.on('connection' , function(socket) {
   socket.on('push_new_message', function(data) {
     var date = new Date();
     console.log(date.toDateString() + ": New message recieved: val=" + data.message);
+    console.log( "broadcast for " + data.username );
     // broadcast the message (remark the s of sockets)
-    io.sockets.emit('fire_new_message', {message: data.message, date: timePrefix(date) } );
+    io.sockets.emit('fire_new_message',
+        {message: data.message, date: timePrefix(date), username: data.username } );
   });
   
 });

@@ -1,30 +1,39 @@
-{
-    const firstPart = [
-      "go",
-      "ma",
-      "sal",
-      "bri",
-      "lu",
-      "fa"
-    ];
+const firstPart = [
+    "go",
+    "ma",
+    "sal",
+    "bri",
+    "lu",
+    "fa",
+    "si",
+];
 
-    const secondPart = [
-        "li",
-        "me",
-        "re",
-        "ance",
-        "dine",
-    ];
+const secondPart = [
+    "li",
+    "me",
+    "re",
+    "ance",
+    "dine",
+    "ri",
+    "vic",
+    "go",
+    "tar",
+];
 
-    function generateRandomNumber(max){
-        let r = Math.random();
-        return (Math.floor(r * (max + 0.99999) ))  ;
-    }
+function generateRandomNumber(max) {
+    let r = Math.random();
+    return (Math.floor((r * max ) + 0.999999999) );
+}
 
 
-    function generateName(){
-        let part1 = firstPart[ generateRandomNumber(firstPart.length )];
-        let part2 = secondPart[ generateRandomNumber(secondPart.length)];
+module.exports = {
+    generateRandomName: function(){
+        let part1 = firstPart[generateRandomNumber(firstPart.length - 1 )];
+        let part2 = secondPart[generateRandomNumber(secondPart.length - 1 )];
         return part1 + part2;
     }
-}
+};
+
+
+
+

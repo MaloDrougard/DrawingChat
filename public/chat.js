@@ -1,17 +1,15 @@
 
-var temp = null;
-
 $(function(){
     // use ip for LAN usage
-  var socket = io.connect('http://192.168.0.57:3000') ;
+  var socket = io.connect('http://localhost:3000') ;
   
-  var submitBtn = $("#submitBtn");
-  var textInput = $("#textInput");
-  var chatRoom = $("#room");
-
+  let submitBtn = $("#submitBtn");
+  let textInput = $("#textInput");
+  let chatRoom = $("#room");
+  let username = $("#userField").text();
 
   function emitNewMessage(){
-      var data = {message: textInput.val() };
+      let data = {message: textInput.val(), username: username };
       textInput.val(""); // delete the text
       console.log("New message send to the server with value: " +  JSON.stringify(data) );
       socket.emit('push_new_message', data );
@@ -33,8 +31,7 @@ $(function(){
   
   socket.on('fire_new_message', function (data) {
     console.log("new message recived" + data.message);
-    temp = data.date;
-    chatRoom.prepend("<p>" + data.date + "   " + data.message + "</p>");
+    chatRoom.prepend("<p><span class='messagePrefix'>" + data.username + ": </span><span>" + data.message + "</span></p>");
     if ( data.message == "triangle" ){
         myTriangle();
     }
